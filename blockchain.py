@@ -16,8 +16,6 @@ class Block:
             self.previousHash + self.timestamp.encode() + json.dumps(self.data).encode()
         )
         return hashlib.sha256(data).digest()
-    
-    
 
 
 class Blockchain:
@@ -42,11 +40,11 @@ class Blockchain:
         realGenesis = self.createGenesisBlock()
 
         if realGenesis.hash != self.chain[0].hash:
-            print('Hash of genesis is not reproducible:',self.chain[0].hash)
+            print("Hash of genesis is not reproducible:", self.chain[0].hash)
             return False
 
-        print('Chain has',len(self.chain),'blocks')
-        for i in range(1,len(self.chain)):
+        print("Chain has", len(self.chain), "blocks")
+        for i in range(1, len(self.chain)):
             currentBlock = self.chain[i]
             previousBlock = self.chain[i - 1]
 
