@@ -64,7 +64,7 @@ class Blockchain:
 
 
 supercoin = Blockchain()
-supercoin.addBlock(Block("2023-01-01", "123"))
-supercoin.addBlock(Block("2023-01-02", "567"))
+supercoin.addBlock(Block("2023-01-01", "A send B20 to D"))
+supercoin.addBlock(Block("2023-01-02", "F sends B40 to G"))
 
 print(supercoin.isChainValid())
