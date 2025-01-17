@@ -18,6 +18,7 @@ class Block:
         return hashlib.sha256(data).digest()
 
 
+
 class Blockchain:
     def __init__(self):
         self.chain = [self.createGenesisBlock()]
@@ -64,7 +65,27 @@ class Blockchain:
 
 
 supercoin = Blockchain()
-supercoin.addBlock(Block("2023-01-01", "A send B20 to D"))
-supercoin.addBlock(Block("2023-01-02", "F sends B40 to G"))
+print("Ledger length:",len(supercoin.chain))
+print("First block:",supercoin.chain[0].data, supercoin.chain[0].timestamp)
 
-print(supercoin.isChainValid())
+b = Block("2023-01-01", "A send B20 to D")
+supercoin.addBlock(b)
+
+print('prevHash of second block',supercoin.chain[1].previousHash)
+print('Hash of first block',supercoin.chain[0].hash)
+# supercoin.addBlock(Block("2023-01-02", "F sends B40 to G"))
+
+# print(supercoin.isChainValid())
+
+
+
+b = Block("2024-01-01", "D send B30 to E")
+supercoin.addBlock(b)
+
+
+print('prevHash of third block',supercoin.chain[2].previousHash)
+print('Hash of second block',supercoin.chain[1].hash)
+
+supercoin.chain[1].data += "."
+supercoin.chain[1].hash = supercoin.chain[1].calculateHash()
+print('Hash of second block after tamperting',supercoin.chain[1].hash)
