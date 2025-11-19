@@ -17,7 +17,8 @@ class Block:
         )
         return hashlib.sha256(data).digest()
 
-
+    def __str__(self):
+        pass
 
 class Blockchain:
     def __init__(self):
